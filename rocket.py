@@ -21,13 +21,29 @@ class Quaternion:
 class Engine:
   def __init__(self, max_thrust):
     self.thrust = get_thrust(0)
+
+    # internals
+		self.pt=
+		self.Tt=
+		self.po=
+		self.gamma=
+		self.R=
+		self.At=
+		self.pe=
+		self.ve=
+		self.Te=
+		self.Ae=
+		self.mdot=
+    
+    # externals
     self.max_thrust = max_thrust
-    self.temp # temp of engine, bottleneck at threshhold
     self.direction = Quanternion(0, 0, 0, 0)
-    self.failure = 0.0001
 
   def get_thrust(fuel):
-    # equation
+    pass
+
+  def get_mass_flow_rate():
+    
 
 class FirstStage:
   def __init__(self):
