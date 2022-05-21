@@ -23,13 +23,13 @@ class Environment:
     self.gas_constant = 8.31432        # N m mol-1 k-1
     self.std_temp_lapse_rate = -0.0065 # K m-1
     self.temp_sea_level = 288.15       # K
-    self.sea_level_pressure=101325     # Pa
-    self.pressure_expo=-self.ACC_GRAVITY*self.molar_mass_air / (self.gas_constant*self.std_temp_lapse_rate)
+    self.sea_level_pressure=101325     # kg m-1 s-2 (Pa)
+    self.pressure_expo=-self.ACC_GRAVITY*self.molar_mass_air / (self.gas_constant*self.std_temp_lapse_rate) # kg m N-1 s-2
 
   # https://www.mide.com/air-pressure-at-altitude-calculator
   def get_air_density( self, height ):
-    pressure = self.sea_level_pressure*(1+(self.std_temp_lapse_rate/self.temp_sea_level)*height)**(self.pressure_expo)
-    temp = self.get_temp(height)
+    pressure = self.sea_level_pressure*(1+(self.std_temp_lapse_rate/self.temp_sea_level)*height)**(self.pressure_expo) # kg m-1 s-2 (Pa)
+    temp = self.get_temp(height) # K
     if isinstance(pressure, complex): pressure = 0
     if temp < 0 : temp = 0
     return 0 if temp == 0 else pressure / (self.gas_constant*temp) # returning density
